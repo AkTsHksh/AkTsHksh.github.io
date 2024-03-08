@@ -1,0 +1,56 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>RESTAURATION</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>RESTAURATION</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>RESTAURATION&nbsp;:</u></strong></span></h2>
+        <p>&nbsp;</p>
+        <p>On va maintenant dire qu’un utilisateur a supprimé par erreur fichier1
+          et que la sauvegarde s’est effectuée entre temps&nbsp;:</p>
+        <p>Je supprime mon fichier dans mon répertoire source et relance une sauvegarde
+          vers mon fichier cible&nbsp;:</p>
+        <figure class="image image-style-align-center">
+          <img src="6_RESTAURATION_image.png">
+        </figure>
+        <p>A l’aide de la commande:</p><pre><code class="language-text-plain"> rdiff-backup –list-increment-size /mnt/data/cible</code></pre>
+        <p>Je peux voir la taille de mon dossier de sauvegarde&nbsp;: et je vois
+          qu’il est différent de la dernière sauvegarde&nbsp;:</p>
+        <figure class="image image-style-align-center">
+          <img src="7_RESTAURATION_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p>On va restaurer l’ancienne sauvegarde, avant ça il faut créer un dossier
+          dans laquelle la renvoyer&nbsp;:</p><pre><code class="language-text-plain">rdiff-backup -r 30m /mnt/data/cible /mnt/data/backup</code></pre>
+        <p>A l’aide de cette commande je vais <strong>restaurer (-r)</strong> ma sauvegarde <strong>d’il y’a 30 minutes (30m)</strong>
+        </p>
+        <p>&nbsp;</p>
+        <figure class="image image-style-align-center">
+          <img src="2_RESTAURATION_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p>Je pourrais récupérer mon fichier1 dans le dossier backup via cette méthode.</p>
+        <p>On peut spécifier des arguments différents à la place de mon argument
+          30m&nbsp;:</p>
+        <ul>
+          <li>Now renvoie au temps courant ;</li>
+          <li>Une date à l'un des formats suivants : YYYY/MM/DD, YYYY-MM-DD, MM/DD/YYYY,
+            ou MM-DDYYYY</li>
+          <li>Par exemple, 2D14h voudra dire il y a 2 jours et 14 heures.</li>
+        </ul>
+        <p style="margin-left:18.0pt;"><i>https://www.it-connect.fr/sauvegarde-et-restauration-avec-rdiff-backup%EF%BB%BF/</i>
+        </p>
+      </div>
+    </div>
+  </body>
+
+</html>

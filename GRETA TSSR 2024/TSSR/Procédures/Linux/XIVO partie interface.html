@@ -1,0 +1,101 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>XIVO partie interface</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>XIVO partie interface</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong>XIVO – Ajout contextes, utilisateurs, lignes</strong></span></h2>
+        <h2>&nbsp;</h2>
+        <p>Voici le panneau latéral ou l’on va atteindre nos configurations suivantes:
+          utilisateurs, lignes et contextes.</p>
+        <p>
+          <img src="XIVO partie interface_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>
+          <img src="1_XIVO partie interface_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>On va commencer par configurer nos contextes, ce qui va définir nos intervalles
+          de numéros et nos règles d’appels&nbsp;:</p>
+        <p>En cliquant sur le + en haut à gauche&nbsp;:</p>
+        <p>
+          <img src="2_XIVO partie interface_image.pn">
+        </p>
+        <p>On attribue une intervalle de numéros à nos contextes pour les utilisateurs&nbsp;:</p>
+        <p>
+          <img src="3_XIVO partie interface_image.pn">
+        </p>
+        <ul>
+          <li>1 – on le nomme&nbsp;</li>
+          <li>2 – on choisit son type</li>
+          <li>3 – on va inclure tous nos contextes les uns dans les autres pour les
+            contacts interservices (à l’exception des groupes).</li>
+          <li>4 – on peut sauvegarder.</li>
+        </ul>
+        <p>&nbsp;</p>
+        <p>Ensuite on définit un intervalle pour les contextes&nbsp;:</p>
+        <p>
+          <img src="4_XIVO partie interface_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p>Ensuite on va créer un utilisateur et une ligne&nbsp;:</p>
+        <p>
+          <img src="5_XIVO partie interface_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p>Ici mes utilisateurs sont créés, prenons l’exemple de Corrine, on va modifier
+          sa ligne, <strong>ne pas oublier de régler le DMTF pour le définir sur RFC 2833, ce qui va autoriser la messagerie vocale</strong>
+        </p>
+        <p>&nbsp;</p>
+        <p>
+          <img src="6_XIVO partie interface_image.pn">
+        </p>
+        <p>Dans la fiche utilisateurs on peut aussi modifier d’autres paramètres,
+          comme&nbsp;:</p>
+        <ul>
+          <li>Créer une règle lorsqu’il ne répond pas,</li>
+          <li>Lui attribuer une messagerie,</li>
+          <li>L’autoriser à mettre les appels en attente,</li>
+          <li>Rediriger l’appel vers un autre utilisateur/contexte (par exemple un secrétariat…)</li>
+          <li>…….</li>
+        </ul>
+        <p>
+          <br>&nbsp;</p>
+        <p>Une fois notre utilisateur créé on va créer une ligne (numéro) à lui attribuer</p>
+        <p>
+          <img src="7_XIVO partie interface_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p>
+          <img src="8_XIVO partie interface_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p><i>De base on ne peut pas modifier l’identifiant et le mot de passe, on doit modifier le dossier IPBX.INI sur le serveur à l’aide de ces commandes&nbsp;:</i>
+        </p>
+        <p>Sur notre machine linux on va se connecter en root puis entrer les arguments
+          suivants&nbsp;:</p><pre><code class="language-text-plain">docker cp xivo_web_1:/etc/xivo/web-interface/ipbx.ini /tmp</code></pre>
+        <p>On va ensuite éditer le fichier&nbsp;:</p><pre><code class="language-text-plain">nano cp /tmp/ipbx.ini</code></pre>
+        <p
+        style="margin-left:18.0pt;">En éditant la ligne sous [user] et mettant</p><pre><code class="language-text-plain">[user]
+Readonly-ipwd = false </code></pre>
+          <p style="margin-left:18.0pt;">On peut autoriser la modification de ces données coté interface graphique.</p>
+          <p>On remplace ensuite le fichier d’origine par le fichier modifié&nbsp;:</p><pre><code class="language-text-plain">docker cp /tmp.ipbx.ini xivo_web_1:/etc/xivo/web-interface/ipbx.ini</code></pre>
+          <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

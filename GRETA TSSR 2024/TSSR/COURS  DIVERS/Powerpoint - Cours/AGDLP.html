@@ -1,0 +1,62 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>AGDLP</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>AGDLP</h1>
+
+      <div class="ck-content">
+        <p><a class="reference-link" href="AGDLP_AGDLP.pptx">AGDLP.pptx</a>&nbsp;</p>
+        <h2><span class="text-huge"><strong><u>Bonne gestion de droits sur un serveur de fichiers Microsoft:</u></strong></span></h2>
+        <figure class="image">
+          <img src="1_AGDLP_image.png">
+        </figure>
+        <h2>&nbsp;</h2>
+        <p>L'objectif est de bien structurer les permissions (d’avoir des groupes
+          avec des noms bien clairs) optimiser et renforcer la sécurité au sein du
+          domaine</p>
+        <p>&nbsp;</p>
+        <h3><span class="text-huge"><strong><u>Les types de groupes&nbsp;:</u></strong></span></h3>
+        <h6><strong>Sécurité&nbsp;:</strong></h6>
+        <p>Ce type de groupe gère les droits pour donner les autorisations d’accès
+          aux ressources (partages de dossiers, de fichiers, imprimantes bureau à
+          distance etc.)</p>
+        <h6><strong>Distribution&nbsp;:</strong></h6>
+        <p>Principalement utilisés pour les applications de messagerie et n’a aucune
+          notion de sécurité pour les envois multiples de mails par exemple, on pourra
+          diffuser le mail à toutes les personnes présente dans le groupe de diffusion.</p>
+        <p>Cette gestion prend son sens si on a une infra très étendue. (Relation
+          d’approbation, création d’un nouveau domaine…)</p>
+        <p>Un utilisateur sera membre d’un groupe global par exemple un groupe de
+          comptables, et ce groupe sera lui-même membre d’un groupe local qui gèrera
+          les accès et lecture, écriture sur les partages de dossiers cet utilisateur
+          aura donc accès à certains types de fichiers</p>
+        <p>&nbsp;</p>
+        <h3><span class="text-huge"><strong><u>Principe d’imbrication de groupe</u></strong></span></h3>
+        <p>On va <i>gérer les utilisateurs avec des groupes globaux</i> (RH, compta,
+          direction</p>
+        <p>Un groupe global peut être utilisé dans un autre domaine et permet plus
+          de possibilité on part du principe qu’aucun user ne doit être membre global
+          uniquement</p>
+        <p>&nbsp;</p>
+        <p><i>On gère ensuite les accès sur les partages de dossiers et fichiers en lecture et écriture des groupes globaux <strong><u>avec</u></strong> des «&nbsp;sous&nbsp;» groupes de domaines locaux.</i>
+        </p>
+        <p>Un groupe domaine local pourra être utilisé uniquement dans le domaine
+          active directory dans lequel il est créé</p>
+        <p>&nbsp;</p>
+        <p>Le groupe universel ajoute une couche de sécurité en plus avant tout,
+          il est accessible dans l’ensemble de la forêt très peu de personnes ont
+          des accès uniquement universels, ils seront gérés de la même manière pour
+          confiner l’accès à certaines zones du domaine.</p>
+      </div>
+    </div>
+  </body>
+
+</html>

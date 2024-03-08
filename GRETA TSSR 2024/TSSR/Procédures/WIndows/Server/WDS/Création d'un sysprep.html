@@ -1,0 +1,98 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Création d&#39;un sysprep</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Création d&#39;un sysprep</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>CREATION D’UNE IMAGE WINDOWS 10 PROFESSIONNEL PERSONALISEE VIA SYSPREP</u></strong></span></h2>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Nous allons maintenant créer une nouvelle machine virtuelle sous Windows
+          10 professionnel pour créer notre système d’exploitation préconfiguré à
+          capturer sur WDS. (BIEN FAIRE ATTENTION A SELECTIONNER WINDOWS 10 PROFESSIONNEL&nbsp;!!)</p>
+        <p>
+          <img src="Création d'un sysprep_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p>Une fois installée on y ajoute les programmes désirés sur l’image que
+          l’on souhaitera déployer ici j’y ai ajouté les TOOLS comme j’utilise VMWare
+          pour ne pas avoir à le refaire à chaque fois, PUTTY et google chrome.</p>
+        <p>On effectue le sysprep en OOBE, en cochant la case «&nbsp;Généraliser&nbsp;»
+          et en Arrêtant le système.</p>
+        <p>
+          <img src="1_Création d'un sysprep_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p>Une fois installée on y ajoute les programmes désirés sur l’image que
+          l’on souhaitera déployer ici j’y ai ajouté les TOOLS comme j’utilise VMWare
+          pour ne pas avoir à le refaire à chaque fois, PUTTY et google chrome.</p>
+        <p>On effectue le sysprep en OOBE, en cochant la case «&nbsp;Généraliser&nbsp;»
+          et en Arrêtant le système.</p>
+        <figure class="image image-style-align-center">
+          <img src="9_Création d'un sysprep_image.pn">
+        </figure>
+        <p>&nbsp;</p>
+        <p>On redémarre ensuite la même machine sur le firmware.</p>
+        <figure class="image image-style-align-center">
+          <img src="2_Création d'un sysprep_image.pn">
+        </figure>
+        <p>&nbsp;</p>
+        <p>Ici, on choisira de lancer la machine sur le EFI Network.</p>
+        <figure class="image image-style-align-center">
+          <img src="3_Création d'un sysprep_image.pn">
+        </figure>
+        <p>&nbsp;</p>
+        <p>ATTENTION&nbsp;: votre serveur ici doit être allumé, et les deux machines
+          doivent être sur le même réseau pour pouvoir communiquer.</p>
+        <p>&nbsp;</p>
+        <p>Votre machine ira chercher l’image Capture.wim précédemment créée sur
+          le serveur et lancer la création d’image (prenez garde à choisir le bon
+          fichier BOOT pour ne pas relancer une installation. Si la capture et le
+          boot ont le même nom)</p>
+        <figure class="image image-style-align-center">
+          <img src="4_Création d'un sysprep_image.pn">
+        </figure>
+        <p>*</p>
+        <p>Il faudra passer les premières étapes pour arriver sur cet écran&nbsp;:</p>
+        <p>Indiquer un emplacement local ou enregistrer la capture,</p>
+        <p>Cocher la case charger l’image sur un serveur de déploiement,</p>
+        <p>Bien indiquer le NOM DU SERVEUR ET NON LE NOM DU DOMAINE&nbsp;!</p>
+        <p>Puis sélectionner le groupe d’images dans lequel on veut ajouter notre
+          capture.</p>
+        <figure class="image image-style-align-center">
+          <img src="5_Création d'un sysprep_image.pn">
+        </figure>
+        <p>&nbsp;</p>
+        <p>Une fois fait il faudra entrer les informations du serveur sur lequel
+          on veut charger l’image&nbsp;:</p>
+        <p>Nom d’utilisateur (admin du domaine)</p>
+        <p>Mot de passe (de l’admin du domaine)</p>
+        <p>
+          <img src="6_Création d'un sysprep_image.pn">
+        </p>
+        <p>&nbsp;</p>
+        <p>L’image se copiera sur le serveur WDS. Une fois cette (longue) étape terminée,
+          on peut éteindre notre machine virtuelle.</p>
+        <figure class="image image-style-align-center image_resized"
+        style="width:50%;">
+          <img src="8_Création d'un sysprep_image.pn">
+        </figure>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

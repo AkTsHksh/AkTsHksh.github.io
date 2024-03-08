@@ -1,0 +1,96 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Configuration de WDS</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Configuration de WDS</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>CONFIGURATION DE WDS</u></strong></span></h2>
+        <p>&nbsp;</p>
+        <p>On va premièrement déployer le service WDS sur notre serveur, il faudra
+          également un ADDS, un DHCP avec une étendue configurée, un disque supplémentaire
+          où l’on va stocker les images.</p>
+        <p>&nbsp;</p>
+        <p>On lance ensuite la console de gestion des images</p>
+        <p>
+          <img src="Configuration de WDS_image.png">
+        </p>
+        <p>&nbsp;</p>
+        <p>Configurer le serveur pour pouvoir ensuite y accueillir les images de
+          déploiement&nbsp;:</p>
+        <p>
+          <img src="1_Configuration de WDS_image.png">
+        </p>
+        <p>&nbsp;</p>
+        <p>La première fenêtre est un rappel des prérequis pour la configuration,
+          il suffit de faire suivant si tout est bien configuré / installé&nbsp;:</p>
+        <figure
+        class="image">
+          <img src="2_Configuration de WDS_image.png">
+          </figure>
+          <p>&nbsp;</p>
+          <p>Mon serveur est un contrôleur de domaine avec un ADDS&nbsp;:</p>
+          <figure
+          class="image image-style-align-center">
+            <img src="3_Configuration de WDS_image.png">
+            </figure>
+            <p>&nbsp;</p>
+            <p>J’indique ensuite ou je veux stocker mes images de Windows</p>
+            <figure
+            class="image image-style-align-center">
+              <img src="4_Configuration de WDS_image.png">
+              </figure>
+              <p>&nbsp;</p>
+              <p>Mon DHCP s’exécute sur ce serveur, je laisse les deux cases de cochées&nbsp;:</p>
+              <figure
+              class="image image-style-align-center">
+                <img src="5_Configuration de WDS_image.png">
+                </figure>
+                <p>&nbsp;</p>
+                <p>Je sélectionne ensuite répondre à tous les nouveaux clients&nbsp;:&nbsp;</p>
+                <p>En exigeant l’approbation de l’administrateur</p>
+                <figure class="image image-style-align-center">
+                  <img src="6_Configuration de WDS_image.png">
+                </figure>
+                <p>Le service mettra une erreur, il suffira d’ajouter une image boot .wim
+                  pour y remédier&nbsp;:&nbsp;</p>
+                <figure class="image image-style-align-center">
+                  <img src="7_Configuration de WDS_image.png">
+                </figure>
+                <p>&nbsp;</p>
+                <p>Il faut maintenant démarrer le serveur en faisant un clic droit dessus,
+                  aller dans toutes les tâches puis démarrer&nbsp;:</p>
+                <figure class="image image-style-align-center">
+                  <img src="8_Configuration de WDS_image.png">
+                </figure>
+                <p>Il est possible que l’erreur persiste même après avoir configuré boot.wim
+                  et install.wim&nbsp;:</p>
+                <p>Je suis tombé sur ce cas lors de mon installation il se peut que cela
+                  vienne du fait qu’une machine WSUS soit dans le domaine mais rien de certain,
+                  dans ce cas j’ai désinstallé WDS et l’ai réinstallé en tant que serveur
+                  autonome</p>
+                <p>Comme cela&nbsp;:</p>
+                <p>Dans ce cas il faudra sélectionner cette option lors de la configuration&nbsp;:</p>
+                <figure
+                class="image image-style-align-center">
+                  <img src="9_Configuration de WDS_image.png">
+                  </figure>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <p>
+                    <br>&nbsp;</p>
+                  <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

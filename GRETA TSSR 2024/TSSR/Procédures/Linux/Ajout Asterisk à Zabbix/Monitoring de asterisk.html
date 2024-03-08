@@ -1,0 +1,137 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Monitoring de asterisk</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Monitoring de asterisk</h1>
+
+      <div class="ck-content">
+        <p><span class="text-huge"><strong><u>Ajouter Asterisk à Zabbix&nbsp;:</u></strong></span>
+        </p>
+        <p>(Une fois le serveur asterisk installé et opérationnel)</p>
+        <p>Sur la machine asterisk on ajoute le plugin AMI (Asterisk Manager Interface)&nbsp;:</p>
+        <p><strong>nano /etc/asterisk/manager.conf</strong>
+        </p>
+        <p>&nbsp;</p>
+        <p>Changer les lignes suivantes dans le fichier de configuration&nbsp;: (si
+          besoin ctrl W pour rechercher)</p>
+        <p><strong>[general]</strong>
+        </p>
+        <p><strong>enabled = yes</strong>
+        </p>
+        <p><strong>webenabled = yes</strong>
+        </p>
+        <p><strong>port = 5038</strong>
+        </p>
+        <p><strong>bindaddr = 0.0.0.0</strong>
+        </p>
+        <p>&nbsp;</p>
+        <p>Puis ajouter ces lignes à la fin du fichier pour la configuration de l’utilisateur
+          AMI&nbsp;:</p>
+        <p><strong>[zabbix]</strong>
+        </p>
+        <p><strong>secret = entrer son mot de passe désiré</strong>
+        </p>
+        <p><strong>deny=0.0.0.0/0.0.0.0</strong>
+        </p>
+        <p><strong>permit=ip du serveur zabbix/255.255.255.0</strong>
+        </p>
+        <p><strong>read = system,call,log,verbose,agent,user,config,dtmf,reporting,cdr,dialplan</strong>
+        </p>
+        <p><strong>write = system,call,agent,user,config,command,reporting,originate,message</strong>
+        </p>
+        <p>&nbsp;</p>
+        <p>Relancer Asterisk manager:</p>
+        <p><strong>asterisk -rx "manager reload"</strong>
+        </p>
+        <p>&nbsp;</p>
+        <p>Vérifier que l’utilisateur AMI a été créé correctement&nbsp;:</p>
+        <p><strong>asterisk -rx "manager show users"</strong>
+        </p>
+        <p><strong>username</strong>
+        </p>
+        <p><strong>--------</strong>
+        </p>
+        <p><strong>zabbix</strong>
+        </p>
+        <p><strong>-------------------</strong>
+        </p>
+        <p><strong>1 manager user configured.</strong>
+        </p>
+        <p><strong>root@Asterisk:/var/log/zabbix#</strong>
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Activer le serveur HTTP Asterisk&nbsp;:</p>
+        <p><strong>nano /etc/asterisk/http.conf</strong>
+        </p>
+        <p>Et éditer la configuration&nbsp;:</p>
+        <p><strong>enabled=yes</strong>
+        </p>
+        <p><strong>bindaddr = l’adresse IP du serveur Asterisk</strong>
+        </p>
+        <p>&nbsp;</p>
+        <p><strong>bindport=8088</strong>
+        </p>
+        <p><strong>and reload your asterisk</strong>
+        </p>
+        <p><strong>asterisk -rx "reload"</strong>
+        </p>
+        <p>&nbsp;</p>
+        <p>Recharger Asterisk:</p>
+        <p><strong>asterisk -rx "reload"</strong>
+        </p>
+        <p>Coté navigateur maintenant, il faut créer un nouvel hôte (dans configuration&gt;hôtes&gt;
+          créer un nouvel hôte nommé par exemple Asterisk server) éditer les macros
+          dans Hôte</p>
+        <p>
+          <img src="4_Monitoring de asterisk_image.p">
+        </p>
+        <p>Puis modifier les macros&nbsp;:&nbsp;</p>
+        <figure class="image">
+          <img src="5_Monitoring de asterisk_image.p">
+        </figure>
+        <p>Actualiser.</p>
+        <p>On aura un récap si on revérifie les macros&nbsp;:</p>
+        <p>
+          <img src="Monitoring de asterisk_image.p">
+        </p>
+        <p>Il reste à installer l’agent sur le serveur linux&nbsp;:</p>
+        <p><strong>apt install zabbix-agent</strong>
+        </p>
+        <p>
+          <img src="1_Monitoring de asterisk_image.p">
+        </p>
+        <p>On va éditer le fichier de configuration&nbsp;:</p>
+        <p><strong>nano /etc/zabbix/zabbix_agentd.conf</strong>
+        </p>
+        <p>Ctrl+W</p>
+        <p>
+          <img src="6_Monitoring de asterisk_image.p">
+        </p>
+        <p>&nbsp;</p>
+        <p>On remplis les informations restantes pour notre création d’hôte&nbsp;:</p>
+        <p>
+          <img src="2_Monitoring de asterisk_image.p">
+        </p>
+        <p>Relancer le service&nbsp;:</p>
+        <p><strong>systemctl restart zabbix-agent.service</strong>
+        </p>
+        <p>
+          <img src="3_Monitoring de asterisk_image.p">
+        </p>
+        <p>On pourra revérifier dans la surveillance pour voir si notre serveur remonte.</p>
+      </div>
+    </div>
+  </body>
+
+</html>

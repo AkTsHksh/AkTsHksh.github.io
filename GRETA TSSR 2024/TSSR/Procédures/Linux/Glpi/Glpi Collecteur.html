@@ -1,0 +1,230 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Glpi Collecteur</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Glpi Collecteur</h1>
+
+      <div class="ck-content">
+        <div>
+          <div>
+            <p> </p>
+            <p><span class="text-big" style="background-color:rgb(255,255,255);color:rgb(32,33,36)">           Les collecteurs dans GLPI permettent la création de ticket automatiquement dans la partie assistance par envoie d'e-mail. </span>
+
+            </p>
+            <p><span class="text-big">          Un utilisateur envoie un email à l'adresse support@votre-domaine.local.</span>
+
+              <span
+              class="text-big" style="background-color:rgb(255,255,255);color:rgb(32,33,36)"> </span>
+            </p>
+            <p><span class="text-big" style="background-color:rgb(255,255,255);color:rgb(32,33,36)">          </span>
+
+              <span
+              class="text-big">GLPI va par le biais des tâches automatiques récupérer l'email dans la
+                boite et créer un ticket</span>
+            </p>
+            <p> </p>
+            <p><span class="text-big" style="color:hsl(210,75%,60%)">Création de la boite mail (Support)</span>
+
+            </p>
+            <p> </p>
+            <figure class="image image_resized">
+              <img src="Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big" style="color:hsl(210,75%,60%)">Prérequis </span>
+
+            </p>
+            <p><span class="text-big" style="color:rgb(32,33,36)">Autoriser les suivi anonymes et Autoriser les ouvertures de Ticket anonymes</span>
+
+            </p>
+            <p> </p>
+            <p><span class="text-big" style="color:rgb(32,33,36)">Aller dans Configuration ==&gt; Générale</span>
+
+            </p>
+            <p> </p>
+            <p>
+              <img src="6_Glpi Collecteur_image.png" />
+            </p>
+            <p> </p>
+            <p><span class="text-big">Puis dans  Assistance  Autoriser les 2 Cases</span>
+
+            </p>
+            <figure class="image">
+              <img src="7_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Activation des Services POP et IMAP</span>
+
+            </p>
+            <p> </p>
+            <p><span class="text-big">Dans Le SRV Exchange</span> </p>
+            <p><span class="text-big">Aller dans Service</span>
+
+            </p>
+            <figure class="image image-style-align-center">
+              <img src="8_Glpi Collecteur_image.png" />
+            </figure>
+            <figure class="image image_resized">
+              <img src="9_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Puis Activé </span>
+
+            </p>
+            <p><span class="text-big">Les Services POP et IMAP (4 Services)</span>
+
+            </p>
+            <figure class="image">
+              <img src="10_Glpi Collecteur_image.png" />
+            </figure>
+            <figure class="image">
+              <img src="11_Glpi Collecteur_image.png" />
+            </figure>
+            <figure class="image">
+              <img src="12_Glpi Collecteur_image.png" />
+            </figure>
+            <figure class="image">
+              <img src="13_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Double Clic sur le Service un fenêtre va s'ouvrir</span>
+
+            </p>
+            <figure class="image image-style-align-center image_resized">
+              <img src="14_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Il faut Modifier   Type de démarrage  le mettre en Automatique </span>
+
+            </p>
+            <p><span class="text-big">  Puis  cliquer sur démarrer et vérifié Etat du Service </span>
+
+            </p>
+            <p> </p>
+            <p><span class="text-big">Les Prérequis sont terminé on va configurer le Collecteur dans GLPI</span>
+
+            </p>
+            <p> </p>
+            <p><span class="text-big" style="color:hsl(210,75%,60%)">Configuration du Collecteur dans GLPI</span>
+
+            </p>
+            <p> </p>
+            <p>
+              <img src="1_Glpi Collecteur_image.png" />
+            </p>
+            <p> </p>
+            <p><span class="text-big">Ajouter un Collecteur</span>
+
+            </p>
+            <p> </p>
+            <figure class="image">
+              <img src="Glpi Collecteur_Capture d'écra" />
+            </figure>
+            <p><span class="text-big">Enregistrer les info de la boite mail</span>
+
+            </p>
+            <p> </p>
+            <p>              Nom                       <a href="#root/S6ADNCtlN6CZ">Helpdesk@tssr.local</a>
+
+            </p>
+            <p>          Identifiant:                Helpdesk</p>
+            <p>Option de Connection :  Pop === TLS===NO-Validate-Cert</p>
+            <p>         Port:                             110</p>
+            <p>                        </p>
+            <figure class="image image_resized">
+              <img src="2_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Sauvegarder</span>
+
+            </p>
+            <figure class="image image_resized">
+              <img src="3_Glpi Collecteur_image.png" />
+            </figure>
+            <p><span class="text-big">Maintenant on va tester la configuration</span>
+
+            </p>
+            <p><span class="text-big">On clic sur Action</span>
+
+            </p>
+            <p>
+              <img src="4_Glpi Collecteur_image.png" />
+            </p>
+            <p><span class="text-big">Et sur Récupérer les courriels maintenant</span>
+
+            </p>
+            <figure class="image">
+              <img src="5_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Si il n'y a pas d'erreur la configuration est Terminé</span>
+
+            </p>
+            <p> </p>
+            <p><span class="text-big">Test </span>
+
+            </p>
+            <p><span class="text-big">Pour le test on va envoyer un mail sur la Boite Mail Helpdesk</span>
+
+            </p>
+            <p> </p>
+            <figure class="image image_resized">
+              <img src="15_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">On peut actualisé manuellement la Synchro</span>
+
+            </p>
+            <p> </p>
+            <p>
+              <img src="16_Glpi Collecteur_image.png" />
+            </p>
+            <p><span class="text-big">On va dans Configuration =====&gt; Actions Automatiques</span>
+
+            </p>
+            <p><span class="text-big">Puis Sur</span>
+
+            </p>
+            <figure class="image">
+              <img src="17_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <figure class="image image_resized">
+              <img src="18_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Et Cliquer sur Exécuter pour Synchroniser</span>
+
+            </p>
+            <p> </p>
+            <p><span class="text-big">Normalement Le ticket doit être Créer</span>
+
+            </p>
+            <figure class="image">
+              <img src="19_Glpi Collecteur_image.png" />
+            </figure>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

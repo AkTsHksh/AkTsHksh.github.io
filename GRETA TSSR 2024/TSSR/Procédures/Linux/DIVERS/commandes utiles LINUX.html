@@ -1,0 +1,87 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>commandes utiles LINUX</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>commandes utiles LINUX</h1>
+
+      <div class="ck-content">
+        <p><span class="text-huge"><strong><u>MODIFICATION D’UTILISATEURS OU DE GROUPES&nbsp;:</u></strong></span>
+        </p>
+        <p>&nbsp;</p>
+        <p>Créer un groupe&nbsp;:</p>
+        <p><strong>groupadd</strong>  <i><strong>«&nbsp;nom_groupe&nbsp;»</strong></i>
+        </p>
+        <p>&nbsp;</p>
+        <p>Créer un utilisateur (ce qui crée un groupe du même nom)</p>
+        <p><strong>adduser </strong><i><strong>«&nbsp;nom_utilisateur&nbsp;»</strong></i>
+        </p>
+        <p>&nbsp;</p>
+        <p>Ajouter un utilisateur et le placer dans un groupe existant</p>
+        <p><strong>adduser </strong><i><strong>«&nbsp;nom_utilisateur&nbsp;»</strong></i><strong> -</strong>  <strong>gid id_</strong><i><strong>group</strong></i>
+        </p>
+        <p>&nbsp;</p>
+        <p>Ajouter un utilisateur à un groupe</p><pre><code class="language-text-plain">adduser «&nbsp;nom_utilisateur&nbsp;» «&nbsp;nom_groupe&nbsp;» (oubien usermod -a -G «&nbsp;nom_groupe&nbsp;» «&nbsp;nom_utilisateur&nbsp;»)</code></pre>
+        <p>&nbsp;</p>
+        <p>Supprimer un utilisateur</p><pre><code class="language-text-plain">deluser «&nbsp;nom utilisateur&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Supprimer l’utilisateur ainsi que son dossier personnel</p><pre><code class="language-text-plain">deluser –remove-home «&nbsp;nom_utilisateur&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p><span style="color:black;">Modifier le mot de passe d’un utilisateur</span>
+        </p><pre><code class="language-text-plain">passwd «&nbsp;nom_utilisateur&nbsp;»</code></pre>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <h5><span class="text-big"><strong>Vérification de l’intégrité de fichiers&nbsp;:</strong></span></h5>
+        <p>Depuis un terminal avec la commande&nbsp;:</p><pre><code class="language-text-plain">sha1sum «&nbsp;nom_du_fichier&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Vérification du code qui est un fichier en «&nbsp;.sum&nbsp;» (issu du
+          site/fourni avec le fichier ISO)</p><pre><code class="language-text-plain">cat «&nbsp;nom_du_fichier&nbsp;»</code></pre>
+        <p>Si les deux sont identiques, alors l’ISO est intègre.</p>
+        <p>&nbsp;</p>
+        <h5><span class="text-huge"><strong>Observation des répertoires et des fichiers&nbsp;:</strong></span></h5>
+        <p>&nbsp;</p>
+        <p>Afficher la taille occupée par le répertoire personnel d’un utilisateur&nbsp;:</p><pre><code class="language-text-plain">du -hs /home/«&nbsp;username&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Afficher la taille des répertoires contenus dans le répertoire personnel
+          d’un utilisateur&nbsp;:</p><pre><code class="language-text-plain">Du -h -d 1 /home/«&nbsp;username&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Afficher les infos de base sur un fichier&nbsp;:</p><pre><code class="language-text-plain">ls -hs «&nbsp;filename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Afficher un max d’infos sur un fichier (contenu Inode)</p><pre><code class="language-text-plain">stat «&nbsp;filename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Pour un fichier donné, afficher le nom du système de fichier et le point
+          de montage&nbsp;:</p><pre><code class="language-text-plain">df -T «&nbsp;filename&nbsp;»cat «&nbsp;filename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Afficher en hexa &amp; ASCII les données contenues dans un fichier&nbsp;:</p><pre><code class="language-text-plain">hexdump -C «&nbsp;finlename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <h5><span class="text-big"><strong>Manipulation de fichiers&nbsp;:</strong></span></h5>
+        <p>Créer un fichier&nbsp;:</p><pre><code class="language-text-plain">touch «&nbsp;filename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Editer le fichier créé et y ajouter du contenu avant de l’enregistrer&nbsp;:</p><pre><code class="language-text-plain">nano «&nbsp;filename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Créer une copie du fichier&nbsp;:</p><pre><code class="language-text-plain">cp filename filename_copy</code></pre>
+        <p>&nbsp;</p>
+        <p>Renommer un fichier</p><pre><code class="language-text-plain">mv filename newfilename</code></pre>
+        <p>&nbsp;</p>
+        <p>Créer un répertoire et déplacer le fichier dans ce répertoire&nbsp;:</p><pre><code class="language-text-plain">mkdir «&nbsp;repertoirename&nbsp;»</code></pre><pre><code class="language-text-plain">cp «&nbsp;filename&nbsp;»/«&nbsp;repertoirename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Supprimer la copier du fichier</p><pre><code class="language-text-plain">rm repertoirename</code></pre>
+        <p>&nbsp;</p>
+        <h5><span class="text-huge"><strong>Permissions</strong></span></h5>
+        <p>Afficher&nbsp;: nom ru propriétaire, groupe taille et permissions du fichier&nbsp;:</p><pre><code class="language-text-plain">Ls -hs «&nbsp;filename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+        <p>Modifier le nom du groupe</p><pre><code class="language-text-plain">Chown :«&nbsp;grpname&nbsp;» «&nbsp;filename&nbsp;»</code></pre>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,149 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Configuration et installation du Client WIN_10_PRO</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Configuration et installation du Client WIN_10_PRO</h1>
+
+      <div class="ck-content">
+        <p><span class="text-huge" style="color:hsl(0, 0%, 0%);"><strong><u>Configuration du nom de machine et fixage d’IP sur une machine client windows 10</u></strong></span>
+        </p>
+        <p>&nbsp;</p>
+        <p><strong>Après avoir installé Windows 10, nous allons renommer la machine bloquer les mises à jour de Windows update pendant 7 jours, et fixer les IP en statique, étant donné que la machine redémarre lors du changement de nom, je vais commencer par fixer les IP&nbsp;:</strong>
+        </p>
+        <p>&nbsp;</p>
+        <p>Ouvrir la zone de recherche Windows en tapant «&nbsp;ncpa.cpl&nbsp;» puis
+          appuyer sur entrer&nbsp;:</p>
+        <figure class="image image-style-align-center">
+          <img src="Configuration et installation ">
+        </figure>
+        <p style="margin-left:40px;">1 -Dans connexions réseau sélectionner la carte à paramétrer</p>
+        <p style="margin-left:40px;">2- cliquer sur propriétés</p>
+        <p style="margin-left:40px;">3- Sélectionner le protocole IPv4</p>
+        <p style="margin-left:40px;">4- cliquer sur propriétés</p>
+        <figure class="image image-style-align-center">
+          <img src="1_Configuration et installation ">
+        </figure>
+        <p>&nbsp;</p>
+        <p style="margin-left:40px;">1- ouvrir en parallèle une fenêtre d’exécution (touche WIN+R) taper cmd
+          puis entrer.</p>
+        <p style="margin-left:40px;">2- taper «&nbsp;ipconfig&nbsp;» dans la fenêtre de commande (noire) pour
+          y repérer l’IPv4 (encadré rouge)</p>
+        <p style="margin-left:40px;">3- dans les <strong>propriétés de&nbsp;: protocole internet</strong> sélectionner
+          l’option «&nbsp;Utiliser l’adresse IP suivante&nbsp;»</p>
+        <p style="margin-left:40px;">4- entrer manuellement les DNS également (<strong>1.1.1.1//1.0.0.1</strong>)</p>
+        <p>Cocher valider en quittant.</p>
+        <figure class="image image_resized image-style-align-center"
+        style="width:61.76%;">
+          <img src="7_Configuration et installation ">
+        </figure>
+        <p>&nbsp;</p>
+        <p><strong>Nous allons maintenant bloquer les mises à jour windows update&nbsp;:</strong>
+        </p>
+        <figure class="image image-style-align-center image_resized" style="width:25%;">
+          <img src="8_Configuration et installation ">
+        </figure>
+        <p>&nbsp;</p>
+        <p>Dans la zone de recherche taper «&nbsp;Windows Uptate&nbsp;» puis ouvrir
+          ensuite le menu&nbsp;:</p>
+        <p>Ensuite il faut simplement cliquer suspendre les mises à jour pendant
+          7 jours&nbsp;</p>
+        <p><i>(Ici je dois appliquer mes mises à jour pour pouvoir les re-bloquer)</i>
+        </p>
+        <figure class="image image-style-align-center">
+          <img src="2_Configuration et installation ">
+        </figure>
+        <p>&nbsp;</p>
+        <p><strong>On va configurer le pare-feu pour autoriser les demandes d’échos venant des machines distantes&nbsp;:</strong>
+        </p>
+        <p style="margin-left:40px;">-1 taper pare-feu dans la zone de recherche Windows</p>
+        <p style="margin-left:40px;">2- sélectionner pare feu […] fonctions avancées de sécurité</p>
+        <p style="margin-left:40px;">3- choisir les règles de trafic entrant&nbsp;</p>
+        <p style="margin-left:40px;">4- rechercher diagnostics de réseau […] demande d’échos ICMP (IPv4)</p>
+        <p>Sélectionner les deux règles et les activer.</p>
+        <p>Refaire la manipulation pour les règles de trafic sortant.</p>
+        <p>
+          <img src="10_Configuration et installation ">
+        </p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>
+          <img class="image-style-align-left image_resized" style="width:25%;" src="3_Configuration et installation ">
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>On peut finir par renommer notre machine&nbsp;:</p>
+        <p>Ouvrir les paramètres, puis systèmes&nbsp;:</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <figure class="image image-style-align-right image_resized"
+        style="width:25%;">
+          <img src="9_Configuration et installation ">
+        </figure>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Ensuite sur le menu déroulant a gauche chercher «&nbsp;à propos de&nbsp;»&nbsp;:</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Il faut ensuite aller dans «&nbsp;Renommer (AVANCE)&nbsp;»</p>
+        <figure
+        class="image">
+          <img src="4_Configuration et installation ">
+          </figure>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <figure class="image image-style-align-right">
+            <img src="5_Configuration et installation ">
+          </figure>
+          <p>&nbsp;</p>
+          <p>D’ici on clique sur modifier</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>
+            <img class="image-style-align-left" src="6_Configuration et installation ">
+          </p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p style="margin-left:80px;">1- on entre le nouveau nom désiré de notre machine</p>
+          <p>&nbsp;</p>
+          <p>2- on valide en cliquant sur «&nbsp;OK&nbsp;»</p>
+          <p>&nbsp;</p>
+          <p>La machine de mandera de redémarrer pour appliquer les modifications,
+            une fois redémarrée, le nom de celle-ci aura changé.</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>
+            <br>&nbsp;</p>
+          <p>&nbsp;</p>
+          <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

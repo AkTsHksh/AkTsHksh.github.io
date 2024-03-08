@@ -1,0 +1,43 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>SID</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>SID</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>SID (security identifier)</u></strong></span></h2>
+        <p>Identifiant unique et immuables alphanumérique assignés pas un contrôleur
+          de domaine qui identifie chaque système, utilisateur ou objet (groupe dans
+          un réseau ou sur une machine</p>
+        <p>Il est stocké dans une base de données de sécurité, il ne peu jamais être
+          utilisé pour identifier un autre utilisateur de groupe</p>
+        <p>Pour chaque utilisateur qui se connecte, le système génère un jeton d’accès
+          qui contient le SID de l’user, les droits et les SID des groupes auxquels
+          il appartient.</p>
+        <p>Windows autorise ou refuse des accès et des privilèges à des ressources
+          en se basant sur une liste de contrôle d’accès</p>
+        <p><span style="background-color:white;color:#202122;">Un <strong>SID&nbsp;</strong>a le format suivant&nbsp;:&nbsp;<strong>S-1-5-21–7623811015-3361044348-030300820-1013</strong></span>
+        </p>
+        <p><span style="background-color:white;color:#202122;"><strong>S –&nbsp;</strong>La chaîne de caractères est un SID (c’est à la fois conceptuellement une suite ordonnée de caractères et physiquement une suite d’ordonnée d’unités de code)</span>
+        </p>
+        <p><span style="background-color:white;color:#202122;"><strong>1</strong> – Le niveau de révision</span>
+        </p>
+        <p><span style="background-color:white;color:#202122;"><strong>5</strong>- la valeur de l’autorité d’identification&nbsp;</span>
+        </p>
+        <p><span style="background-color:white;color:#202122;"><strong>21–7623811015-3361044348-030300820</strong> identificateur de domaine ou d’ordinateur</span>
+        </p>
+        <p><span style="background-color:white;color:#202122;"><strong>1013</strong> – un identificateur relatif (RID) c’est un identifiant unique au sein d’un domaine, il est attribué par le RID master</span>
+        </p>
+      </div>
+    </div>
+  </body>
+
+</html>

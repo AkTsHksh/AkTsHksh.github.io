@@ -1,0 +1,90 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Base de donnée GLPI</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Base de donnée GLPI</h1>
+
+      <div class="ck-content">
+        <div>
+          <div>
+            <p><span class="text-big">Tout d'abord il faut rentrer dans le terminal de mariadb afin de créer notre base de donnée GLPI</span>
+
+            </p>
+            <p> </p><pre><code class="language-text-plain">mysql -u root -p</code></pre>
+
+            <figure
+            class="image">
+              <img src="Base de donnée GLPI_image.png" />
+              </figure>
+              <p> </p>
+              <p><span class="text-big">Puis on créer la base de donnée</span>
+
+              </p>
+              <p><span class="text-big">ici on choisie le nom de la base “glpi”</span>
+
+              </p>
+              <p><span class="text-big" style="color:hsl(0,75%,60%)">Attention sur les commande suivante il ne faut pas oublier les “;”</span>
+
+              </p><pre><code class="language-text-plain">create database glpi;</code></pre>
+
+              <p> </p>
+              <figure class="image image_resized">
+                <img src="1_Base de donnée GLPI_image.png" />
+              </figure>
+              <p> </p>
+              <p><span class="text-big">Ensuite on créer notre utilisateur (modifier "user" ainsi que “motdepasse”)</span>
+
+              </p>
+              <p> </p><pre><code class="language-text-plain">create user glpiuser@localhost identified by "Greta37!";</code></pre>
+
+              <p> </p>
+              <figure class="image">
+                <img src="2_Base de donnée GLPI_image.png" />
+              </figure>
+              <p> </p>
+              <p><span class="text-big">Après cela on donne tous les privilèges à cette utilisateur de la base de donnée</span>
+
+              </p><pre><code class="language-text-plain">grant all privileges on glpi.* to glpiuser@localhost;</code></pre>
+
+              <p> </p>
+              <figure class="image image_resized">
+                <img src="3_Base de donnée GLPI_image.png" />
+              </figure>
+              <p> </p>
+              <p><span class="text-big">Enfin on affecte les changements de privilèges aux utilisateurs</span>
+
+              </p><pre><code class="language-text-plain">flush privileges;</code></pre>
+
+              <p> </p>
+              <figure class="image image_resized">
+                <img src="4_Base de donnée GLPI_image.png" />
+              </figure>
+              <p> </p>
+              <p><span class="text-big">Pour quitter le terminal</span>
+
+              </p><pre><code class="language-text-plain">QUIT</code></pre>
+
+              <p> </p>
+              <figure class="image image_resized">
+                <img src="5_Base de donnée GLPI_image.png" />
+              </figure>
+              <p> </p>
+              <p><span class="text-big">La base de données est installé</span>
+
+              </p>
+              <p> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

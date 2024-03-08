@@ -1,0 +1,99 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Intégrer une machine linux dans un domaine ADDS avec DHCP</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Intégrer une machine linux dans un domaine ADDS avec DHCP</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>Intégrer une machine linux à un active directory windows</u></strong></span></h2>
+        <p>&nbsp;</p>
+        <p><i>Il faut au préalable avoir installé un serveur ADDS ainsi qu’un DHCP ce qui va simplifier la manipulation.</i>
+        </p>
+        <p>&nbsp;</p>
+        <p>Ensuite coté machine linux, après installation, sous terminal (en root)
+          effectuer une update</p><pre><code class="language-text-plain">apt update</code></pre>
+        <p>
+          <img src="Intégrer une machine linux dan">
+        </p>
+        <p>&nbsp;</p>
+        <p>Configurer la carte réseau&nbsp;:</p><pre><code class="language-text-plain">Nano /etc/network/interfaces</code></pre>
+        <p>&nbsp;</p>
+        <p>
+          <img src="1_Intégrer une machine linux dan">
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>Dans le cas ou il n’y a pas de DHCP, changer la dernière ligne&nbsp;:</p><pre><code class="language-text-plain">iface ens33 inet static
+(tabulation) address «&nbsp;entrer l’IP&nbsp;»
+(tabulation) netmask «&nbsp;entrer le masque&nbsp;»
+(tabulation) gateway «&nbsp;entrer la passerelle&nbsp;»
+(tabulation) dnsnameserver «&nbsp;ip du serveur&nbsp;»
+(tabulation) dnsnameserver «&nbsp;1.1.1.1&nbsp;» (au cas où)</code></pre>
+        <p>Ensuite redémarrer la carte réseau avec cette commande&nbsp;:</p><pre><code class="language-text-plain">Systemctl restart networking</code></pre>
+        <p>&nbsp;</p>
+        <p>Changer le hostname&nbsp;:</p><pre><code class="language-text-plain">Nano /etc/hostname</code></pre>
+        <figure
+        class="image image-style-align-center">
+          <img src="3_Intégrer une machine linux dan">
+          </figure>
+          <p>&nbsp;</p>
+          <p>On vérifie que notre liaison est bien faite avec le serveur en regardant
+            le fichier resolv.conf</p><pre><code class="language-text-plain">Nano /etc/resolv.conf</code></pre>
+          <figure
+          class="image image-style-align-center">
+            <img src="2_Intégrer une machine linux dan">
+            </figure>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>On va ensuite installer les paquets nécessaires&nbsp;:</p><pre><code class="language-text-plain">sudo apt ‐y install realmd libnss‐sss libpam‐sss sssd sssdtools adcli samba‐common‐bin oddjob oddjob‐mkhomedir packagekit</code></pre>
+            <figure
+            class="image image-style-align-center">
+              <img src="4_Intégrer une machine linux dan">
+              </figure>
+              <p>&nbsp;</p>
+              <p>Lors de l’installation, la machine demandera si un DHCP est installé&nbsp;:</p>
+              <figure
+              class="image image-style-align-center">
+                <img src="5_Intégrer une machine linux dan">
+                </figure>
+                <p>Répondre oui si un DHCP distribue l’adresse, non si ce n’est pas le cas.</p>
+                <p>&nbsp;</p>
+                <p>On va maintenant vérifier si le serveur est bien vu par la commande realm
+                  discover&nbsp;:</p><pre><code class="language-text-plain">Realm discover TESTSSR.local</code></pre>
+                <figure
+                class="image image-style-align-center">
+                  <img src="6_Intégrer une machine linux dan">
+                  </figure>
+                  <p>&nbsp;</p>
+                  <p>Il faut maintenant se déplacer dans le dossier utilisateur de /home&nbsp;:</p><pre><code class="language-text-plain">Cd /home/«&nbsp;user&nbsp;»/</code></pre>
+                  <figure
+                  class="image image-style-align-center">
+                    <img src="7_Intégrer une machine linux dan">
+                    </figure>
+                    <p>&nbsp;</p>
+                    <p>Puis rejoindre le serveur&nbsp;:</p><pre><code class="language-text-plain">realm join -U administrateur «&nbsp;nom du domaine&nbsp;»</code></pre>
+                    <p>il suffira de taper le mot de passe de l’administrateur du serveur pour
+                      rejoindre celui-ci</p>
+                    <figure class="image image-style-align-center">
+                      <img src="8_Intégrer une machine linux dan">
+                    </figure>
+                    <p>&nbsp;</p>
+                    <p>Si aucun retour alors l’intégration s’est bien passée, je vérifie coté
+                      serveur si c’est bien le cas&nbsp;:</p>
+                    <figure class="image image-style-align-center">
+                      <img src="9_Intégrer une machine linux dan">
+                    </figure>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

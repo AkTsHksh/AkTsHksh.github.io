@@ -1,0 +1,77 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Configuration des règles</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Configuration des règles</h1>
+
+      <div class="ck-content">
+        <p><span class="text-huge"><strong><u>Mise en place d’une DMZ:</u></strong></span>
+        </p>
+        <p>&nbsp;</p>
+        <p>Prérequis&nbsp;:&nbsp;</p>
+        <ul>
+          <li style="margin-left:40px;">2 machines en host only sur des réseaux différents</li>
+          <li style="margin-left:40px;">1 machine avec un pfsense, 3 cartes réseau (1-NAT 2 en Host only)</li>
+        </ul>
+        <p>&nbsp;</p>
+        <p>Le but va être d’installer PFSense et créer des rêgles de pare feu sur
+          nos interfaces pour que le lan puisse communiquer avec la DMZ, mais pas
+          l’inverse.</p>
+        <figure class="image image-style-align-center">
+          <img src="Configuration des règles_image">
+        </figure>
+        <p>&nbsp;</p>
+        <p><span class="text-huge"><strong><u>Config PFsense:</u></strong></span>
+        </p>
+        <p>On va laisser la carte NAT en DHCP et fixer les deux adresses de EM1 et
+          EM2.</p>
+        <p>Notre LAN sera sur le réseau 192.168.10.X, la DMZ sur 192.168.20.X</p>
+        <figure
+        class="image image-style-align-center">
+          <img src="1_Configuration des règles_image">
+          </figure>
+          <p>Comme la carte OPT1 à été ajoutée en optionnelle, on ne peut pas pour
+            le moment accéder au GUI de pfsense sur cette adresse, on va donc se connecter
+            avec une machine située dans le réseau LAN pour lancer le pare-feu.</p>
+          <p>
+            <br><span class="text-huge"><strong><u>Configuration des rèlgles de pare feu:</u></strong></span>
+          </p>
+          <p><span class="text-huge"><strong><u>Côté LAN</u></strong></span>
+          </p>
+          <p>On va premièrement autoriser les requêtes ICMP ayant pour source le LAN,
+            à destination de la DMZ&nbsp;: (on travaillera avec les réseaux sur ces
+            règles&nbsp;: )</p>
+          <p>
+            <img src="2_Configuration des règles_image">
+          </p>
+          <p>&nbsp;</p>
+          <p>On va affiner également notre règle pour accéder au WAN et seulement autoriser
+            les protocoles TCP/UDP&nbsp;:</p>
+          <p>
+            <img src="3_Configuration des règles_image">
+          </p>
+          <p>Voilà pour nos règles coté LAN.</p>
+          <p>&nbsp;</p>
+          <p><span class="text-huge"><strong><u>Coté DMZ&nbsp;:</u></strong></span>
+          </p>
+          <p>Il faut autoriser les requêtes ICMP en provenance du réseau LAN à destination
+            de la DMZ&nbsp;: (On se sert encore du réseau pour créer la règle&nbsp;:
+            )</p>
+          <p>
+            <img src="4_Configuration des règles_image">
+          </p>
+          <p>On peut également autoriser l’accès au WAN pour notre DMZ.</p>
+          <p>Notre DMZ est maintenant créée.</p>
+      </div>
+    </div>
+  </body>
+
+</html>

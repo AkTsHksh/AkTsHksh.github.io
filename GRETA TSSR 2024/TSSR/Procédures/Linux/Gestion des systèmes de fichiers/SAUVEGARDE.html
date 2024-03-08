@@ -1,0 +1,54 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>SAUVEGARDE</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>SAUVEGARDE</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>Sauvegarde de fichiers (rdiff-backup) :</u></strong></span></h2>
+        <p>&nbsp;</p>
+        <p>Premièrement<strong>, je me déplace sur mon disque</strong> et <strong>crée mon dossier de sauvegarde</strong>&nbsp;:</p>
+        <p>(pwd me permet de savoir ou je suis) le chemin de mon dossier et le suivant
+          /mnt/data)</p>
+        <figure class="image image-style-align-center">
+          <img src="2_SAUVEGARDE_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p><strong>Je me déplace</strong> maintenant dans mon <strong>dossier personnel</strong> et
+          y <strong>crée un fichier texte</strong>&nbsp;:</p>
+        <figure class="image">
+          <img src="1_SAUVEGARDE_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p>Je télécharge l’application Rdiff-backup pour sauvegarder mes fichiers
+          avec cette commande&nbsp;:</p><pre><code class="language-text-plain">Apt install rdiff-backup</code></pre>
+        <p>Je vérifie maintenant la bonne installation avec cette commande&nbsp;:</p><pre><code class="language-text-plain">Rdiff-backup -V</code></pre>
+        <p>Il faut maintenant que je lance la sauvegarde en indiquant le chemin absolu
+          du fichier cible et de sa destination&nbsp;:</p>
+        <p>Ma commande sera la suivante&nbsp;:</p><pre><code class="language-text-plain">rdiff-backup (--print-statistics) /home/come/source /mnt/data/cible</code></pre>
+        <p>
+          <img src="4_SAUVEGARDE_image.png">
+        </p>
+        <p>&nbsp;</p>
+        <p>Ici on voit que mes 3 fichiers ont été sauvegardés depuis le répertoire
+          source de mon dossier come dans le répertoire cible&nbsp;:</p>
+        <figure class="image image-style-align-center">
+          <img src="SAUVEGARDE_image.png">
+        </figure>
+        <figure class="image image-style-align-center">
+          <img src="3_SAUVEGARDE_image.png">
+        </figure>
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

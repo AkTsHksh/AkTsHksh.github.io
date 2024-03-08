@@ -1,0 +1,49 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>définition - usage</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>définition - usage</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>DNS (Domain Name System)</u></strong></span></h2>
+        <p>Il permet d’associer un nom compréhensible a une adresse IP, il associe
+          une adresse logique (le nom de domaine) à une adresse physique (IP) un
+          peu à la manière d’un annuaire téléphonique (Et vice-versa).Il est utilisé
+          pour localiser les serveurs de domaines Active Directory.</p>
+        <p>Il utilise les protocoles <span style="background-color:yellow;"><strong>UDP &amp; TCP et le port 53</strong></span>
+        </p>
+        <p>&nbsp;</p>
+        <h3><span class="text-huge"><strong><u>COMMENT&nbsp;?</u></strong></span></h3>
+        <ul>
+          <li>Le LDNS (Local DNS) s’adresse à l’un des serveurs racine qui le dirige
+            vers le serveur DNS.com</li>
+          <li>Le serveur DNS.com découvre ensuite le propriétaire du site recherché
+            et notifies le LDNS avec un enregistrement de serveur de nom (NS) pour
+            le site concerné</li>
+          <li>Le LDNS répond en demandant un enregistrement d’Adresse (enregistrement
+            A) qui inclus l’adresse IP du site en question.</li>
+          <li>Après avoir reçu l’enregistrement A, le LDNS enverra l’adresse IP au navigateur
+            et met en cache les informations d’adresses IP pour référence future. <i>(L’enregistrement A et utilisé par les IPv4 l’enregistrement AAAA est pour les IPv6)</i>
+          </li>
+        </ul>
+        <p>Il élimine la nécessité de mémoriser les adresses IP et utilise le nom
+          de domaine pour l’adresse web.</p>
+        <figure class="image image-style-align-center">
+          <img src="définition - usage_image.png">
+        </figure>
+        <p>Chaque appareil et service sue le World Wide Web possède une IP, n’étant
+          pas facile à retenir, le DNS fournit une solution à ce problème en associant
+          un nom de domaine à une adresse IP.</p>
+      </div>
+    </div>
+  </body>
+
+</html>

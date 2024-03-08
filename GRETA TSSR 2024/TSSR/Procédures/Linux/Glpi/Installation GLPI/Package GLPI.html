@@ -1,0 +1,135 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Package GLPI</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Package GLPI</h1>
+
+      <div class="ck-content">
+        <div>
+          <div>
+            <p><span class="text-big">On va télécharger le fichier d'install de Glpi dans le dossier tmp pour qu'il soit effacer quand on éteindra la machine</span>
+
+            </p>
+            <p><span class="text-big">Tout d'abord on se met dans le répertoire tmp pour télécharger l'archive</span>
+
+            </p><pre><code class="language-text-plain">cd /tmp/</code></pre>
+
+            <p><a href="https://glpi-project.org/fr/telecharger-glpi/">https://glpi-project.org/fr/telecharger-glpi/</a>
+
+            </p>
+            <figure class="image">
+              <img src="Package GLPI_image.png" />
+            </figure>
+            <figure class="image">
+              <img src="1_Package GLPI_image.png" />
+            </figure>
+            <p><span class="text-big">Pour télécharger sur la Machine on copie l'adresse du lien et on fais wget</span>
+
+            </p>
+            <figure class="image">
+              <img src="2_Package GLPI_image.png" />
+            </figure>
+            <p> </p><pre><code class="language-text-plain">wget https://github.com/glpi-project/glpi/releases/download/10.0.7/glpi-10.0.7.tgz</code></pre>
+
+            <p> </p>
+            <figure class="image">
+              <img src="3_Package GLPI_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">On vérifie le Fichier Glpi-10.0.7 à été téléchargé</span>
+
+            </p>
+            <p> </p>
+            <figure class="image">
+              <img src="4_Package GLPI_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Le dossier Glpi-10.0.0.7 est compressé (tgz) donc on va le décompresser</span>
+
+            </p>
+            <figure class="image image_resized">
+              <img src="5_Package GLPI_image.png" />
+            </figure>
+            <p> </p><pre><code class="language-text-plain">tar -xvzf glpi-10.0.7.tgz</code></pre>
+
+            <p><span class="text-big">Sans le v c'est non verbeux et on vérifie si il est décompressé </span>
+
+            </p>
+            <figure class="image">
+              <img src="6_Package GLPI_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Maintenant on va déplacer le fichier Glpi dans le dossier html</span>
+
+            </p>
+            <p> </p><pre><code class="language-text-plain">mv glpi /var/www/html/</code></pre>
+
+            <p> </p>
+            <p><span class="text-big">Puis on vérifie si il a bien été déplacé</span>
+
+            </p>
+            <p> </p><pre><code class="language-text-plain">ls /var/www/html/</code></pre>
+
+            <p> </p>
+            <figure class="image image_resized">
+              <img src="7_Package GLPI_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">Enfin on va changer les permissions pour que le serveur web apache ait accès à ces fichiers</span>
+
+            </p>
+            <p><span class="text-big">on se déplace dans le dossier html</span>
+
+            </p>
+            <p> </p><pre><code class="language-text-plain">cd /var/www/html/</code></pre>
+
+            <p> </p>
+            <p><span class="text-big">et on regarde les détail et les droit des dossier</span>
+
+            </p>
+            <p> </p><pre><code class="language-text-plain">ls -la</code></pre>
+
+            <p> </p>
+            <figure class="image">
+              <img src="8_Package GLPI_image.png" />
+            </figure>
+            <p> </p>
+            <p><span class="text-big">on change les droit du dossier et on entre l'user  ww-data dansle groupe ww-data</span>
+
+            </p>
+            <p> </p><pre><code class="language-text-plain">chown -R www-data:www-data /var/www/html/</code></pre>
+
+            <p> </p>
+            <p><span class="text-big">Puis on change les Droit</span>
+
+            </p>
+            <p> </p><pre><code class="language-text-plain">chmod -R 750 /var/www/html/glpi</code></pre>
+
+            <p> </p>
+            <figure class="image">
+              <img src="9_Package GLPI_image.png" />
+            </figure>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+            <p> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

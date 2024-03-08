@@ -1,0 +1,121 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Montage de disque, permission et raccourci (gnome)</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Montage de disque, permission et raccourci (gnome)</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>Linux, ajouter un disque supplémentaire, montage au boot de la machine et accès utilisateurs&nbsp;:</u></strong></span></h2>
+        <p>&nbsp;</p>
+        <ul>
+          <li>1 passer en <strong>ROOT</strong>
+          </li>
+          <li>2 <code><strong>fdisk -L</strong></code> pour repérer si le disque est reconnu.</li>
+        </ul>
+        <figure class="image image-style-align-center">
+          <img src="14_Montage de disque, permission ">
+        </figure>
+        <p>Créer la table de partition le disque en gpt&nbsp;:</p><pre><code class="language-text-plain">cfdisk /dev/sdb</code></pre>
+        <p>
+          <img src="Montage de disque, permission ">
+        </p>
+        <p>Créer la table en <strong>gpt</strong>.</p>
+        <figure class="image image-style-align-center">
+          <img src="1_Montage de disque, permission ">
+        </figure>
+        <p>Sélectionner le disque ou l’on veut créer la table et sélectionner <strong>«&nbsp;Nouvelle&nbsp;».</strong>
+        </p>
+        <p>Définir la Taille voulue puis appuyer sur <strong>«&nbsp;Entrée&nbsp;»</strong>
+        </p>
+        <figure class="image image-style-align-center">
+          <img src="3_Montage de disque, permission ">
+        </figure>
+        <p>&nbsp;</p>
+        <p>Une fois terminé le nom du périphérique changera, et la table de partition
+          sera créée&nbsp;:</p>
+        <figure class="image image-style-align-center">
+          <img src="2_Montage de disque, permission ">
+        </figure>
+        <p>On peut maintenant Sauvegarder notre partition <strong><u>en sélectionnant</u> «&nbsp;ECRIRE&nbsp;»</strong> valider
+          en saisissant <strong>«&nbsp;oui&nbsp;»</strong> puis <strong>«&nbsp;QUITTER&nbsp;.</strong>
+        </p>
+        <p><strong>Si la manipulation à été prise en compte le message synchronisation des disques s’affichera.</strong>
+        </p>
+        <figure class="image image-style-align-center">
+          <img src="4_Montage de disque, permission ">
+        </figure>
+        <p>&nbsp;</p>
+        <p>Il ne reste plus qu’à formater la partition en ext4 sur le disque à l’aide
+          de cette commande&nbsp;:</p><pre><code class="language-text-plain">mkfs.ext4 /dev/sdb1</code></pre>
+        <figure
+        class="image image-style-align-center">
+          <img src="5_Montage de disque, permission ">
+          </figure>
+          <p>&nbsp;</p>
+          <p>Le but maintenant est d’accorder l’accès à tous les utilisateurs sur ce
+            disque, pour cela on va créer notre dossier, appliquer les accès à tous
+            les utilisateurs puis monter le disque ensuite.</p>
+          <p>Créer le dossier à l’aide de cette commande&nbsp;:&nbsp;</p><pre><code class="language-text-plain">mkdir /mnt/data</code></pre>
+          <p>
+            <img src="6_Montage de disque, permission ">
+          </p>
+          <p>Pour accorder les accès à tous les utilisateurs on va utiliser cette commande&nbsp;:</p><pre><code class="language-text-plain">chmod 777 /mnt/data</code></pre>
+          <p>
+            <img src="7_Montage de disque, permission ">
+          </p>
+          <p>On va maintenant chercher l’UUID de notre nouveau disque avec cette commande&nbsp;:</p><pre><code class="language-text-plain">blkid</code></pre>
+          <figure
+          class="image image-style-align-center">
+            <img src="8_Montage de disque, permission ">
+            </figure>
+            <p><strong>Notre UUID apparait dans l’encadré rouge.</strong>
+            </p>
+            <p>
+              <br>On va maintenant ouvrir le fichier système <i>/etc/fstab</i> dans un éditeur
+              de texte pour ajouter deux lignes à la fin du fichier pour monter notre
+              disque au démarrage de l’os.</p><pre><code class="language-text-plain"># data sur sdb1&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (le dièse signifie que celle ligne est un commentaire)</code></pre><pre><code class="language-text-plain">UUID=xxxxxxxxxxxxxx /mnt/data ext4 defaults 0 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (on remplace les XX par l’UIID de notre blkid précédent)</code></pre>
+            <p><span style="color:red;"><strong>Bien faire attention aux arguments pour ne pas bloquer le démarrage de notre machine&nbsp;!!!</strong></span>
+            </p>
+            <p>Ouvrir le fichier système /etc/fstab&nbsp;:</p><pre><code class="language-text-plain">nano /etc/fstab</code></pre>
+            <figure
+            class="image image-style-align-center">
+              <img src="9_Montage de disque, permission ">
+              </figure>
+              <p><strong>On enregistre avec ctrl S</strong>
+              </p>
+              <p>On peut ensuite vérifier que tout est bon avec la commande&nbsp;</p><pre><code class="language-text-plain">mount -a</code></pre>
+              <figure
+              class="image image-style-align-center">
+                <img src="10_Montage de disque, permission ">
+                </figure>
+                <p>Là ce message me demande d’utiliser une autre commande car celle-ci ne
+                  fonctionne pas&nbsp;:</p><pre><code class="language-text-plain">systemctl daemon-reload</code></pre>
+                <p>Une fois entrée, si aucun message ne s’affiche, alors aucune erreur n’est
+                  détectée. Je peux maintenant relancer ma machine.</p>
+                <p>On peut vérifer que notre disque est bien monté&nbsp;:</p><pre><code class="language-text-plain">fdisk -l</code></pre>
+                <p>&nbsp;</p>
+                <p>On peut finalement créer un raccourci de notre dossier data&nbsp;:</p>
+                <figure
+                class="image image-style-align-center">
+                  <img src="11_Montage de disque, permission ">
+                  </figure>
+                  <figure class="image image-style-align-center">
+                    <img src="13_Montage de disque, permission ">
+                  </figure>
+                  <figure class="image image-style-align-center">
+                    <img src="12_Montage de disque, permission ">
+                  </figure>
+                  <p>&nbsp;</p>
+      </div>
+    </div>
+  </body>
+
+</html>

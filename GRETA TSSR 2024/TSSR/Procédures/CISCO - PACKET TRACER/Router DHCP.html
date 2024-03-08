@@ -1,0 +1,128 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Router DHCP</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Router DHCP</h1>
+
+      <div class="ck-content">
+        <p><span class="text-huge"><strong><u>ACTIVER LE DHCP SUR UN ROUTER CISCO</u></strong></span>
+        </p>
+        <figure class="image image-style-align-center">
+          <img src="Router DHCP_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p><u>Acitver le mode admin et changer le nom</u>
+        </p>
+        <p><code><strong>Router&gt;enable</strong></code>
+        </p>
+        <p><code><strong>Router#configure terminal&nbsp;</strong></code>
+        </p>
+        <p><code><i>Enter configuration commands, one per line. End with CNTL/Z.</i></code>
+        </p>
+        <p><code><strong>Router(config)#hostname ROUTER_DHCP</strong></code>
+        </p>
+        <p>&nbsp;</p>
+        <p><u>Alumer l’interface</u>
+        </p>
+        <p><code>ROUTER_DHCP(config)#interface gigabitEthernet 0/1</code>
+        </p>
+        <p><code>ROUTER_DHCP(config-if)#no shutdown</code>
+        </p>
+        <p><code>%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up</code>
+        </p>
+        <p><code>%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up</code>
+        </p>
+        <p>&nbsp;</p>
+        <p><u>Fixer l’ip de l’interface désirée</u>
+        </p>
+        <p><code><strong>ROUTER_DHCP(config-if)#ip address 172.16.255.254 255.255.0.0</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(config-if)#exit</strong></code>
+        </p>
+        <p>&nbsp;</p>
+        <p><u>Nommer le dhcp et donner les adresses distribuables (+ no ip domain-lookup)</u>
+        </p>
+        <p><code><strong>ROUTER_DHCP(config)#ip dhcp pool TEST</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(dhcp-config)#net</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(dhcp-config)#network 172.16.0.0 255.255.0.0</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(dhcp-config)#dns-server 1.1.1.1</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(dhcp-config)#default-router 172.16.255.254</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(dhcp-config)#^Z</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP#conf t</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(config)#no ip domain lookup</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(config)#exit</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP#</strong></code>
+        </p>
+        <p><code><i>%SYS-5-CONFIG_I: Configured from console by console</i></code>
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p><u>Vérification &amp; afficher les ip distribuées par ce router dans son interface</u>
+        </p>
+        <p><code><strong>ROUTER_DHCP#show ip dhcp binding</strong></code>
+        </p>
+        <p>&nbsp;</p>
+        <figure class="image image-style-align-center">
+          <img src="1_Router DHCP_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p><u>Sur la machine on active le dhcp, le routeur devrait la distribuer&nbsp;:</u>
+        </p>
+        <figure class="image image-style-align-center">
+          <img src="2_Router DHCP_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p><u>Maintenant en ajoutant une autre machine sur le switch placé sur l’interface 0/1et en configurant une seconde interface (0/2)&nbsp;:</u>
+        </p>
+        <p>&nbsp;</p>
+        <figure class="image image-style-align-center">
+          <img src="3_Router DHCP_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <figure class="image image-style-align-center">
+          <img src="4_Router DHCP_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p><u>Et en vérifiant les adresses distribuées on obtient ça&nbsp;:</u>
+        </p>
+        <figure class="image image-style-align-center">
+          <img src="5_Router DHCP_image.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p>Via cette ligne de commande, on peut choisir d’exclure des adresses&nbsp;:</p>
+        <p><code><strong>ROUTER_DHCP#conf t</strong></code>
+        </p>
+        <p><code><strong>ROUTER_DHCP(config)#ip dhcp excluded-address </strong><i><strong>XXX.XXX.XXX.XXX</strong></i><strong> </strong><i><strong>YYY YYY YYY YYY</strong></i></code>
+        </p>
+        <p><code><i>X = première adresse</i></code>
+        </p>
+        <p><code><i>Y dernière adresse</i></code>
+        </p>
+        <p><code><i>Toutes les adresses situées dans cette range ne seront pas distribuées par le routeur.</i></code>
+        </p>
+      </div>
+    </div>
+  </body>
+
+</html>

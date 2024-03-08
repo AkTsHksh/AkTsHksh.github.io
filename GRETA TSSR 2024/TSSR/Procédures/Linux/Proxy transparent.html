@@ -1,0 +1,200 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Proxy transparent</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Proxy transparent</h1>
+
+      <div class="ck-content">
+        <h2><strong>Étapes de configuration</strong></h2>
+        <h3><strong>Étape 1 : Installation du package Squid</strong></h3>
+        <ol>
+          <li>Connectez-vous à l'interface web de pfSense.</li>
+          <li>Accédez à <strong>System &gt; Package Manager</strong>
+          </li>
+        </ol>
+        <figure class="image">
+          <img src="Proxy%20transparent/vmware_Kygfzahtjj.png">
+        </figure>
+        <ol>
+          <li>Recherchez "squid" dans la barre de recherche.</li>
+          <li>Cliquez sur <strong>Install</strong> pour installer le package Squid.</li>
+        </ol>
+        <figure class="image">
+          <img src="Proxy%20transparent/vmware_Sl5SQteI4q.png">
+        </figure>
+        <p>&nbsp;</p>
+        <p><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);">Pour commencer, il faut créer une autorité de certification sur notre pare-feu PfSense.&nbsp;</span>&nbsp;
+          <br><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);">On se rend dans “System” </span>
+          <span
+          style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(1)</code> 
+            </span><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);">, puis certificate </span>
+            <span
+            style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(2)</code> 
+              </span><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);">:</span>
+        </p>
+        <figure class="image">
+          <img src="Proxy%20transparent/vmware_tEZzYf3pBN.png">
+        </figure>
+        <p>Une fois sur le page on clique sur “<strong>Add</strong>”&nbsp;</p>
+        <figure
+        class="image">
+          <img src="Proxy%20transparent/vmware_1dtLKePCAG.png">
+          </figure>
+          <p>Pour le configurer on note juste un “<strong>Description Name</strong>”
+            puis on save tout en bas.</p>
+          <figure class="image">
+            <img src="Proxy%20transparent/vmware_QmJCHwXXBK.png">
+          </figure>
+          <p>Une fois le certificat crée on l'export en cliquant ici :</p>
+          <figure class="image">
+            <img src="Proxy%20transparent/vmware_5fW3aoGp4b.png">
+          </figure>
+          <p>Il suffit ensuite de le lancer dans la machine hote désirée.</p>
+          <p>De plus dans la machine qui passera par pfsense, on tape “<strong>Proxy</strong>”
+            <span
+            style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(1)</code> 
+              </span>dans la barre de recherche et on choisi “Modifier les paramètre de proxy”
+              <span
+              style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(2)</code>&nbsp;</span>
+          </p>
+          <figure class="image">
+            <img src="Proxy%20transparent/vmware_etSgVBfBiN.png">
+          </figure>
+          <p>&nbsp;</p>
+          <p>On descent un peu et on active “Utiliser un serveur proxy” <span style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(1)</code></span> :&nbsp;
+            <br><strong>Adresse</strong> : Adresse LAN du proxy et port 3128</p>
+          <figure
+          class="image">
+            <img src="Proxy%20transparent/vmware_7u20XJ4u2L.png">
+            </figure>
+            <p>&nbsp;</p>
+            <h3><strong>Étape 2 : Configuration de Squid</strong></h3>
+            <h3><span class="text-tiny">Une fois l'installation terminée, accédez à <strong>Services &gt; Squid Proxy Server</strong>. (on désactivera le proxy pour pouvoir configurer)</span></h3>
+            <figure class="image">
+              <img src="Proxy%20transparent/vmware_RSABWQullc.png">
+            </figure>
+            <p>On commence par se rendre dans “Locale Cache” on ne change rien, juste
+              on save en bas de la page</p>
+            <figure class="image">
+              <img src="Proxy%20transparent/tuto-pfsense-proxy-transparent">
+            </figure>
+            <p>Ensuite on se rend dans “General” :&nbsp;
+              <br>Cochez <strong>Enable Squid Proxy</strong> pour activer le proxy.</p>
+            <figure
+            class="image">
+              <img src="Proxy%20transparent/vmware_sitARN51Mn.png">
+              </figure>
+              <p><strong>Check to enable the Squid proxy </strong>: On coche l'option&nbsp;
+                <br><strong>Listen IP Version</strong><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);"> : écouter en IPv4, en IPv6 ou les deux</span>&nbsp;
+                <br><strong>Proxy interface(s)</strong> : Ici, ce sera seulement sur l'interface
+                "<strong>LAN</strong>" donc je la sélectionne.&nbsp;
+                <br><strong>Proxy Port</strong> : on laisse le port par défaut, à savoir 3128,
+                mais il ne devra pas être déclaré sur les postes clients puisque l'on va
+                configurer Squid en mode proxy transparent.&nbsp;
+                <br><strong>Allow Users on interface</strong> : cochez cette case pour autoriser
+                implicitement les utilisateurs connectés sur le réseau "LAN" à utiliser
+                le proxy.&nbsp;
+                <br><strong>Resolve DNS IPv4 First</strong> : on coche l'option</p>
+              <figure
+              class="image">
+                <img src="Proxy%20transparent/1_tuto-pfsense-proxy-transparent">
+                </figure>
+                <figure class="image">
+                  <img src="Proxy%20transparent/5_tuto-pfsense-proxy-transparent">
+                </figure>
+                <p>&nbsp;</p>
+                <p>Cliquez sur <strong>Save</strong> pour enregistrer les modifications.</p>
+                <p>On déscent et on s'arette à “Transparent Proxy Settings”&nbsp;
+                  <br><strong>Transparent HTTP Proxy</strong> : On coche l'option&nbsp;
+                  <br><strong>Transparent Proxy Interface(s)</strong> : LAN</p>
+                <p>&nbsp;</p>
+                <figure class="image">
+                  <img src="Proxy%20transparent/2_tuto-pfsense-proxy-transparent">
+                </figure>
+                <p>On s'arette à SSL Man In the Middle Filtering</p>
+                <p><strong>HTTPS/SSL Intersection</strong> : On coche l'option <span style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(1)</code></span>&nbsp;
+                  <br><strong>SSL/MITM</strong> : On choisi Splice all <span style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(2)</code></span>&nbsp;
+                  <br><strong>SSL intercept interface(s)</strong> : On choisi LAN <span style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(3)</code></span>&nbsp;
+                  <br><strong>SSL Proxy Port</strong> : On tape 3129 <span style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(4)</code></span>&nbsp;
+                  <br><strong>CA</strong> : On clique sur le menu déroulant et on choisi notre
+                  certificat crée plus tot <span style="background-color:hsl(0,75%,60%);color:hsl(0,0%,100%);"><code>(5)</code></span>
+                </p>
+                <figure class="image">
+                  <img src="Proxy%20transparent/vmware_BGOpTa2kc0.png">
+                </figure>
+                <p>&nbsp;</p>
+                <p>On descent encore et on s'arette sur “Logging Settings”&nbsp;</p>
+                <p><strong>Enable Access Logging</strong><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);"> : cochez l'option pour activer les journaux</span>&nbsp;
+                  <br><strong>Rotate Logs</strong><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);"> : pendant combien de jours souhaitez-vous conserver les logs ?</span>
+                </p>
+                <figure class="image">
+                  <img src="Proxy%20transparent/3_tuto-pfsense-proxy-transparent">
+                </figure>
+                <p>&nbsp;</p>
+                <p>On continu dans le sous menu "Headers Handling, Language and other Customizations</p>
+                <p><strong>Visible Hostname</strong><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);"> : correspond au nom d'hôte qui peut s'afficher côté client</span>&nbsp;
+                  <br><strong>Administrator's Email</strong> : <span style="background-color:rgb(255,255,255);color:rgb(68,68,68);">l'e-mail spécifié pour l'option&nbsp;</span>&nbsp;
+                  <br><strong>Error Language </strong>:<strong> </strong><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);">Pour les messages d'erreurs justement, précisez la langue française au niveau de l'option</span>
+                </p>
+                <p>&nbsp;</p>
+                <figure class="image">
+                  <img src="Proxy%20transparent/4_tuto-pfsense-proxy-transparent">
+                </figure>
+                <p><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);">Voilà, on est arrivé au bout de la page de configuration ! Cliquez sur "</span><strong>Save</strong> 
+                  <span
+                  style="background-color:rgb(255,255,255);color:rgb(68,68,68);">" pour appliquer cette nouvelle configuration.</span>
+                </p>
+                <p><span style="background-color:rgb(255,255,255);color:rgb(68,68,68);">On se rend dans l'onglet “ACLs” (1)</span>&nbsp;
+                  <br>Allowed Subnets on indique notre adresse réseau WAN/LAN et son CIDR</p>
+                <figure
+                class="image">
+                  <img src="Proxy%20transparent/vmware_mVBG2o5f0q.png">
+                  </figure>
+                  <p>&nbsp;</p>
+                  <h3><strong>Étape 3 : Configuration des règles de pare-feu</strong></h3>
+                  <ol>
+                    <li>Accédez à <strong>Firewall &gt; Rules</strong>.</li>
+                    <li>Ajoutez une nouvelle règle pour autoriser le trafic vers le proxy.
+                      <ul>
+                        <li>Interface : LAN (ou toute autre interface que vous utilisez)</li>
+                        <li>Protocole : TCP/UDP</li>
+                        <li>Source : Tout</li>
+                        <li>Port source : Tout</li>
+                        <li>Destination : Tout</li>
+                        <li>Port destination : Port Squid (par défaut : 3128)</li>
+                      </ul>
+                    </li>
+                    <li>Cliquez sur <strong>Save</strong> pour enregistrer la règle.</li>
+                  </ol>
+                  <figure class="image">
+                    <img src="Proxy%20transparent/vmware_w2n8lOsj9D.png">
+                  </figure>
+                  <p>
+                    <br>Dans la section “BlackList” on peux choisir des sites spécifique a bloquer
+                    :</p>
+                  <figure class="image">
+                    <img src="Proxy%20transparent/vmware_ApxCLR7Bg8.png">
+                  </figure>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                  <h3><strong>Étape 4 : Test du proxy</strong></h3>
+                  <ol>
+                    <li>Configurez les paramètres proxy sur votre navigateur client pour pointer
+                      vers l'adresse IP de pfSense et le port Squid que vous avez configuré.</li>
+                    <li>Naviguez sur internet pour tester le proxy.</li>
+                    <li>Consultez les journaux de Squid pour vérifier l'activité et dépanner les
+                      problèmes éventuels.</li>
+                  </ol>
+      </div>
+    </div>
+  </body>
+
+</html>

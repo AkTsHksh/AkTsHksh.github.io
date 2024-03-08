@@ -1,0 +1,51 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>DHCP</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>DHCP</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>Dynamic Host Configuration Protocol - Protocole de Configuration Dynamique d’Hôte</u></strong></span></h2>
+        <p>C’est un protocole qui attribue une adresse IP, passerelle par défaut
+          et les informations du serveur DNS à chaque hôte effectuant une requête
+          auprès de lui, (de manière statique ou dynamique)</p>
+        <p>Il utilise le protocole <span style="background-color:yellow;"><strong>UDP et les Ports 67 pour le serveur / 68 pour le client</strong></span>
+        </p>
+        <p>&nbsp;</p>
+        <h4><span class="text-big"><strong><u>COMMENT&nbsp;</u></strong></span></h4>
+        <ol>
+          <li style="margin-left:40px;">Découverte,&nbsp;</li>
+          <li style="margin-left:40px;">Offre,&nbsp;</li>
+          <li style="margin-left:40px;">Requête,&nbsp;</li>
+          <li style="margin-left:40px;">Autorisation DHCP</li>
+        </ol>
+        <p>(Discovery, Offer, Request, Acknolegement DHCP Ack)</p>
+        <ol>
+          <li>&nbsp;Un <u>client DHCP envoie un paquet de diffusion (Broadcast)</u> comprenant
+            son <u>nom et son adresse MAC</u> pour trouver un serveur DHCP</li>
+          <li>Un serveur DHCP répond à la <u>Découverte</u> avec une <u>Offre</u> pour une
+            adresse IP disponible</li>
+          <li>Le Client répond ensuite par une <u>Requête DHCP</u> pour demander au serveur
+            DHCP l’adresse proposée</li>
+          <li>Le serveur DHCP envoie une <u>Autorisation DHCP</u> pour informer le client
+            qui est autorisé à utiliser l’adresse IP demandée qui lui est attribuer.</li>
+        </ol>
+        <p>&nbsp;</p>
+        <p>Le DHCP attribue également la passerelle par défaut, le masque sous réseau
+          approprié, ainsi que les informations du serveur DNS sur le périphérique</p>
+        <p>
+          <img src="DHCP_image.png">Le DHCP offre ainsi une configuration fiable et une administration réseau
+          réduite.</p>
+      </div>
+    </div>
+  </body>
+
+</html>

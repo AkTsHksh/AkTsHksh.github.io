@@ -1,0 +1,86 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Permissions, utilisateurs</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Permissions, utilisateurs</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>PERMISSIONS, UTILISATEURS&nbsp;:</u></strong></span></h2>
+        <p>&nbsp;</p>
+        <h3><strong><u>AFFICHER LES DROITS &amp; PERMISSIONS&nbsp;:</u></strong></h3>
+        <h3>&nbsp;</h3>
+        <p>On affiche les permissions grâce à la commande&nbsp;:</p><pre><code class="language-text-plain">Ls -l&nbsp;(on peut utiliser ls -la «&nbsp;a&nbsp;» pour les fichiers cachés)</code></pre>
+        <p>On obtient&nbsp;:</p>
+        <figure class="image">
+          <img src="Permissions, utilisateurs_imag">
+        </figure>
+        <p>Prenons la dernière ligne&nbsp;:</p>
+        <ul>
+          <li>Le premier tiret «<strong>&nbsp;-</strong>&nbsp;» indique que c’est un
+            fichier ordinaire («&nbsp;d&nbsp;» indique que c’est un dossier).</li>
+        </ul><pre><code class="language-text-plain">Rwx rw- r—</code></pre>
+        <ul>
+          <li>R à une valeur de 4</li>
+          <li>W à une valeur de 2</li>
+          <li>X à une valeur de 1
+            <ul>
+              <li>Rwx le premier RWX correspond au propriétaire du fichier, ici, il a donc
+                les droits en lecture (r) en écriture (w) et en exécution (x).</li>
+              <li>Rw le second emplacement correspond au groupe d’utilisateurs, ici, ils
+                ont le droit de lire (r) et d’écrire (w).</li>
+              <li>R le dernier «&nbsp;segment&nbsp;» correspond aux autres, ici ils n’ont
+                qu’un droit de lecture (r) sur le fichier</li>
+            </ul>
+          </li>
+        </ul>
+        <p>&nbsp;</p>
+        <ul>
+          <li><strong>1</strong> est le nombre de liens</li>
+          <li><strong>user</strong> (<i>le premier</i>) correspond au propriétaire du
+            fichier</li>
+          <li><strong>user</strong> (<i>le second</i>) correspond au groupe propriétaire</li>
+          <li>ici i’l n’y a pas de dernier<strong> «&nbsp;user&nbsp;»&nbsp;</strong>mais
+            il correspondrait au<strong> «&nbsp;autres&nbsp;»</strong>
+          </li>
+          <li><strong>1104</strong> correspond à la taille du fichier</li>
+          <li><strong>Août 3 16:30</strong> date et heure de la dernière modification</li>
+          <li><strong>Info-log.txt</strong> nom du fichier</li>
+        </ul>
+        <p>
+          <br>&nbsp;</p>
+        <p>
+          <img src="1_Permissions, utilisateurs_imag">
+        </p>
+        <p>
+          <br>&nbsp;</p>
+        <p><strong><u>CHANGER LE PROPRIETAIRE D’UN FICHIER/DOSSIER&nbsp;:</u></strong>
+        </p>
+        <p>
+          <img src="2_Permissions, utilisateurs_imag">
+        </p>
+        <p>&nbsp;</p>
+        <p>En regardant le propriétaire du dossier «&nbsp;partage&nbsp;», je vois
+          qu’il appartient à «&nbsp;root&nbsp;»</p>
+        <p>
+          <img src="3_Permissions, utilisateurs_imag">
+        </p>
+        <p>
+          <img src="4_Permissions, utilisateurs_imag">
+        </p>
+        <p>Je vais changer mon propriétaire et le groupe de ce dossier&nbsp;:</p>
+        <p>
+          <img src="5_Permissions, utilisateurs_imag">
+        </p><pre><code class="language-text-plain">Chown = change owner</code></pre><pre><code class="language-text-plain">greta:greta = propriétaire:groupe</code></pre><pre><code class="language-text-plain">/home/greta/bureau/partage = chemin du dossier dont je veux changer les propriétaires.</code></pre>
+      </div>
+    </div>
+  </body>
+
+</html>

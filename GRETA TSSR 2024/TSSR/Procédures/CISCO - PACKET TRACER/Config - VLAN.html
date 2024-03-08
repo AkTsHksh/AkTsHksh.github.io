@@ -1,0 +1,59 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Config - VLAN</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Config - VLAN</h1>
+
+      <div class="ck-content">
+        <p><strong><u>CONFIGURATION D’UN SWITCH, CREATION VLAN ET ADRESSAGE SUR PORTS DESIRES.</u></strong>
+        </p>
+        <p>&nbsp;</p><pre><code class="language-text-plain">Switch&gt;enable
+Switch#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Switch(config)#no ip domain-lookup</code></pre>
+        <p>&nbsp;</p>
+        <p><u>NOM DU COMMUTATEUR</u>
+        </p><pre><code class="language-text-plain">Switch(config)#hostname SW-1 </code></pre>
+        <p>&nbsp;</p>
+        <p><u>CREATION ET NOM VLAN 10-20</u>
+        </p><pre><code class="language-text-plain">SW-1(config)#vlan 10
+SW-1(config-vlan)# name VLAN10
+SW-1(config-vlan)#vlan 20
+SW-1(config-vlan)# name VLAN20
+SW-1(config-vlan)#end
+SW-1#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.</code></pre>
+        <p>&nbsp;</p>
+        <p><u>REDIRECTION DES PORTS Fa 0/2-3</u>
+        </p><pre><code class="language-text-plain">SW-1(config)#interface range FastEthernet 0/2-3
+SW-1(config-if)#switchport mode acces
+SW-1(config-if)#switchport access vlan 10
+SW-1(config-if)#exit
+</code></pre>
+        <p>&nbsp;</p>
+        <p><u>REDIRECTION DES PORTS Fa0/4-5</u>
+        </p><pre><code class="language-text-plain">SW-1(config)#interface range FastEthernet0/4-5
+SW-1(config-if)#switchport mode acces
+SW-1(config-if)#switchport access vlan 20
+SW-1(config-if)#exit</code></pre>
+        <p>&nbsp;</p>
+        <p><u>REDIRECTION ET TRUNK DU PORT Fa0/1</u>
+        </p><pre><code class="language-text-plain">SW-1(config)#interface FastEthernet0/1
+SW-1(config-if)#switchport access vlan 1
+SW-1(config-if)#exit
+SW-1(config)#interface FastEthernet0/1
+SW-1(config-if)#
+SW-1(config-if)#switchport mode trunk</code></pre>
+      </div>
+    </div>
+  </body>
+
+</html>

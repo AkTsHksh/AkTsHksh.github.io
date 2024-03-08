@@ -1,0 +1,61 @@
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../../style.css">
+    <base target="_parent">
+    <title data-trilium-title>Couche 2 - Liaison de données</title>
+  </head>
+  
+  <body>
+    <div class="content">
+       <h1 data-trilium-h1>Couche 2 - Liaison de données</h1>
+
+      <div class="ck-content">
+        <h2><span class="text-huge"><strong><u>Liaison de donnée couche 2</u></strong></span></h2>
+        <p>Protocoles ethernet/token ring</p>
+        <p>Le problème quand tout le monde est sur le même support c’est de savoir
+          qui parle en même temps le niveau deux s’occupe de régler ce problème</p>
+        <p>La PDU EST LA TRAME composée des adresses MAC (destination et source),
+          de la data du protocole de niveau 3 et de la somme de contrôle.</p>
+        <p>La MAC est mise en place politique d’accès au média – media accès control
+          elle permet de travailler sur tous types de supports (paires torsadées
+          coaxial fibre…) ces accès physiques sont différents mais ont la même politique
+          d’accès aux médias. CSMA/CD CSMA/CA carrier sense multiple acces on essaie
+          de détecter/éviter les collisions (collisions détections collision avoidance))</p>
+        <p><span class="text-huge"><strong><u>Caractérisation des équipements&nbsp;</u></strong></span>
+        </p>
+        <p>ils ont des adresses MAC liées à l’équipement chacune a sa propre adresse
+          (carte réseau) elles peuvent être unicast (mono diffusion destinée à un
+          équipement, au moins un bit a 0) multicast (destinée à un groupe d’appareils
+          le premier octet est impair) broadcast qui se diffuse sur tout le réseau
+          à tout le monde (tous ses octets sont à 1) et qui sera supprimée avec l’arrivée
+          des IPV6</p>
+        <p>Codées sur 6 octets normalisés par IEEE&nbsp; 3+3 les 3 premiers identifient
+          le constructeur</p>
+        <p>il y’a plusieurs type d’envoi&nbsp;</p>
+        <p>Unicast (un seul destinataire identifié)</p>
+        <p>Multicast tous les bits ne sont pas à 1 mais le premier octet et impair</p>
+        <p>Broadcast tous les bits sont à 1</p>
+        <p>On fait du multicast de préférence pour être sûr que seuls les équipements
+          concernés la traitent&nbsp;</p>
+        <p>Il n’y a plus de broadcast en IPV6.</p>
+        <p>Equipement&nbsp;: commutateurs (switchs) ponts (bridges on les connecte
+          en cascade pour faire une étoile étendue pour des équipement de marque
+          différente mais il y aura un goulot d’étranglement</p>
+        <p>Pour deux équipements (switchs) identiques (Propriétaire et gamme) on
+          peut «&nbsp;prolonger le bus&nbsp;» pour travailler à la vitesse du bus
+          et non du port c’est le stack (mis l’un sur l’autre et connectique propriétaire)</p>
+        <p>Des ports sont maintenant normalisés pour palier à ce problème avec des
+          ports SFP+</p>
+        <p>Un switch 24 ports en aura 26 mais DEUX SERO&nbsp;NT POUR LE STACK ils
+          prolongeront le bus</p>
+        <p>On peut faire comme ça du «&nbsp;stack horizontal&nbsp;» (ports SFP+ et
+          fibre)</p>
+        <p>Anciennement MDI/MDI-X les switchs sont maintenant auto MDI.</p>
+      </div>
+    </div>
+  </body>
+
+</html>
